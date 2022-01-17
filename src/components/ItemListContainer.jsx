@@ -1,13 +1,13 @@
 import React from "react";
+import ItemList from "./ItemList";
 import Container from '@mui/material/Container'
-import ItemCount from "./ItemCount";
 
-export default function ItemListCointainer({greeting}){
+export default function ItemListContainer({greeting}){
     return (
         <>
         <Container>
             <h1>{greeting}</h1>
-            <ItemCount stock={10} initial={1}/>
+            <ItemList/>
         </Container>
         </>
     )
