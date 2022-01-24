@@ -2,17 +2,19 @@ import React from "react";
 import ItemCount from "./ItemCount";
 import { Card, CardActions, CardContent, CardMedia, Typography } from "@mui/material";
 
+const images = require.context('../img');
+
 export default function Item({product}) {
 
     return (
         <>
             <Card sx={{ maxWidth: 345 }}>
-                {/* <CardMedia
+                <CardMedia
                     component="img"
-                    height=""
-                    image=""
-                    alt=" "
-                /> */}
+                    height="140"
+                    image= {images(`./${product.picture}`)}
+                    alt={product.name}
+                />
                 <CardContent>
                     <Typography gutterBottom variant="h4" component="div">
                         {product.name}

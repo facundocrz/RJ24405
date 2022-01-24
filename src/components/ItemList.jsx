@@ -9,9 +9,9 @@ export default function ItemList() {
     useEffect(() => {
         const promiseProd = new Promise((resolve, reject) => {
             setTimeout(() => {
-                resolve([{ name: 'i9 12900K', price: 100000, stock: 10 },
-                { name: 'i7 12700K', price: 60000, stock: 20 },
-                { name: 'i5 12600K', price: 45000, stock: 30 }])
+                resolve([{id: 1, name: 'i9 12900K', price: 100000, stock: 10, picture: 'i9-12900k.jpg' },
+                {id: 2, name: 'i9 11900K', price: 80000, stock: 20, picture: 'i9-11900k.jpg' },
+                {id: 3, name: 'i9 10900K', price: 65000, stock: 30, picture: 'i9-10900k.jpg' }])
             }, 4000)
         })
 
@@ -30,11 +30,9 @@ export default function ItemList() {
             <Box sx={{display:'flex', flexDirection:'row', alignItems: 'center'}}>
                 {products.map(item => {
                     return (
-                        <>
-                            <div style={{margin: '5px'}}>
+                            <div key={item.id} style={{margin: '5px'}}>
                             <Item product={item}/>
                             </div>
-                        </>
                     )
                 })}
             </Box>
