@@ -1,14 +1,19 @@
 import React from "react";
 import ItemCount from "./ItemCount";
-import { Card, CardActions, CardContent, CardMedia, Typography } from "@mui/material";
+import { Card, CardActions, CardContent, CardMedia, Typography, Button } from "@mui/material";
+import {Link} from 'react-router-dom'
 
 const images = require.context('../img');
 
 export default function Item({product}) {
 
+    function onAdd(count) {
+        alert(product.name+" se agrego al carrito");
+    }
+
     return (
         <>
-            <Card sx={{ maxWidth: 345 }}>
+            <Card style={{width:'400px'}}>
                 <CardMedia
                     component="img"
                     height="140"
@@ -23,8 +28,13 @@ export default function Item({product}) {
                         {"$" + product.price}
                     </Typography>
                 </CardContent>
-                <CardActions>
-                    <ItemCount product={product} initial={0}/>
+                <CardActions style={{display: 'flex', flexDirection:'column'}}>
+                    <Button variant="outlined" color="primary">
+                      <Link to={`/item/${product.id}`} style={{ textDecoration: 'none', color: '#1976d2' }}>
+                          ver detalle
+                      </Link>
+                    </Button>
+                    <ItemCount stock={product.stock} initial={0} onAdd={onAdd}/>
                 </CardActions>
             </Card>
         </>
