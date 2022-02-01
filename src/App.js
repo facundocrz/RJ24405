@@ -3,6 +3,7 @@ import NavBar from './components/NavBar';
 import ItemListContainer from './components/ItemListContainer';
 import ItemDetailContainer from './components/ItemDetailContainer';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import Cart from './components/Cart';
 
 function App() {
   return (
@@ -10,13 +11,16 @@ function App() {
       <NavBar />
       <Switch>
         <Route exact path='/'>
-        <ItemListContainer title="Novedades" />
+          <ItemListContainer title="Novedades" />
         </Route>
         <Route path='/category/:categoryId'>
-        <ItemListContainer title="" />
+          <ItemListContainer title="" />
         </Route>
         <Route path='/item/:itemId'>
-        <ItemDetailContainer/>
+          <ItemDetailContainer />
+        </Route>
+        <Route path='/cart'>
+          <Cart />
         </Route>
       </Switch>
     </BrowserRouter>
