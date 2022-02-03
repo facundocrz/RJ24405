@@ -1,33 +1,37 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import ItemCount from "./ItemCount";
 import { Box, Typography, Button } from '@mui/material'
 import { Link } from "react-router-dom";
+import { cartContext } from "../context/CartProvider";
 
 const images = require.context('../img');
 
-export default function ItemDetail({ detail }) {
+export default function ItemDetail({ product }) {
 
-    const [quiantity, setQuantity] = useState();
     const [buttonCart, setButtonCart] = useState(false);
+    const [quantity, setQuantity] = useState();
+
+    const { addItem } = useContext(cartContext);
 
     function onAdd(count) {
-        setQuantity(count);
-        setButtonCart(true);
+        setQuantity(count)
+        setButtonCart(true)
+        addItem(product,count)
     }
 
     return (
         <>
             <Box sx={{ display: 'flex', alignItems: 'center', flexDirection: 'column' }}>
                 <Typography variant="h1" color="initial">
-                    {detail.name}
+                    {product.name}
                 </Typography>
                 <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }} style={{ width: '100%' }}>
-                    <img src={images(`./${detail.picture}`)} style={{ width: '800px', height: '800px' }}></img>
+                    <img src={images(`./${product.picture}`)} style={{ width: '800px', height: '800px' }}></img>
                     <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-                        <h2>{"$" + detail.price}</h2>
-                        <p>socket: {detail.socket}</p>
-                        <p>frecuencia: {detail.frecuency}</p>
-                        <p>nucleos: {detail.cores}</p>
+                        <h2>{"$" + product.price}</h2>
+                        <p>socket: {product.socket}</p>
+                        <p>frecuencia: {product.frecuency}</p>
+                        <p>nucleos: {product.cores}</p>
                         {buttonCart ?
                             <Box container sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
                                 <h3></h3>
@@ -38,7 +42,7 @@ export default function ItemDetail({ detail }) {
                                 </Button>
                             </Box>
                             :
-                            <ItemCount stock={detail.stock} initial={1} onAdd={onAdd} />
+                            <ItemCount stock={product.stock} initial={1} onAdd={onAdd} />
                         }
                     </Box>
                 </Box>

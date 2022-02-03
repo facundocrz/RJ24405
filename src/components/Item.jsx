@@ -7,10 +7,6 @@ const images = require.context('../img');
 
 export default function Item({product}) {
 
-    function onAdd(count) {
-        alert(product.name+" se agrego al carrito");
-    }
-
     return (
         <>
             <Card style={{width:'400px'}}>
@@ -34,7 +30,6 @@ export default function Item({product}) {
                           ver detalle
                       </Link>
                     </Button>
-                    <ItemCount stock={product.stock} initial={0} onAdd={onAdd}/>
                 </CardActions>
             </Card>
         </>

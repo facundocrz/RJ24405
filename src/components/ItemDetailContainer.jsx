@@ -5,7 +5,7 @@ import {productos} from '../data';
 import {useParams} from 'react-router-dom'
 
 export default function ItemDetailContainer() {
-    const [details, setDetails] = useState([])
+    const [product, setProduct] = useState([])
     const [loading, setLoading] = useState(false)
     const {itemId} = useParams();
     const getItem = () => {
@@ -17,7 +17,7 @@ export default function ItemDetailContainer() {
 
         promiseDetail
             .then((res) => {
-                setDetails(res.find(item => item.id === parseInt(itemId)))
+                setProduct(res.find(item => item.id === parseInt(itemId)))
                 setLoading(true)
             })
             .catch((err) => {
@@ -31,7 +31,7 @@ export default function ItemDetailContainer() {
         <Container>
         {
             (loading) ?
-                <ItemDetail detail={details} />
+                <ItemDetail product={product} />
             :
             <CircularProgress />
         }

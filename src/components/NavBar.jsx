@@ -50,7 +50,7 @@ export default function NavBar() {
                                 </Button>
                             </div>
                             <Button variant="icon" color="inherit">
-                                <Link to={'/carrito'} style={{ color: 'white' }}>
+                                <Link to={'/cart'} style={{ color: 'white' }}>
                                     <ShoppingCart />
                                 </Link>
                             </Button>
