@@ -13,7 +13,7 @@ export default function ItemListContainer({ title }) {
         const promiseProd = new Promise((resolve, reject) => {
             setTimeout(() => {
                 resolve(productos)
-            }, 2000)
+            }, 200)
         })
 
         promiseProd

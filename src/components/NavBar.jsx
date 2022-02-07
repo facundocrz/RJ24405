@@ -2,6 +2,7 @@ import React from "react";
 import { Box, AppBar, Toolbar, Typography, Container, Button } from '@mui/material'
 import { ShoppingCart } from '@mui/icons-material'
 import { Link } from "react-router-dom";
+import CartWidget from "./CartWidget";
 
 export default function NavBar() {
     return (
@@ -49,11 +50,7 @@ export default function NavBar() {
                                     </Link>
                                 </Button>
                             </div>
-                            <Button variant="icon" color="inherit">
-                                <Link to={'/cart'} style={{ color: 'white' }}>
-                                    <ShoppingCart />
-                                </Link>
-                            </Button>
+                            <CartWidget/>
                         </Toolbar>
                     </Container>
                 </AppBar>

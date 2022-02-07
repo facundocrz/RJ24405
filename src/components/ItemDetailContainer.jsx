@@ -12,7 +12,7 @@ export default function ItemDetailContainer() {
         const promiseDetail = new Promise((resolve, reject) => {
             setTimeout(() => {
                 resolve(productos)
-            },2000)
+            },200)
         })
 
         promiseDetail
