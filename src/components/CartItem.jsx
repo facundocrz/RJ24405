@@ -3,8 +3,6 @@ import { Button, Card, CardContent, CardMedia, Typography } from "@mui/material"
 import React, { useContext } from "react";
 import { cartContext } from "../context/CartProvider";
 
-const images = require.context('../img');
-
 export default function CartItem({ product }) {
 
     const { removeItem } = useContext(cartContext)
@@ -14,7 +12,7 @@ export default function CartItem({ product }) {
             <CardMedia
                 component="img"
                 sx={{ width: 160, display: { xs: 'none', sm: 'block' } }}
-                image={images(`./${product.item.picture}`)}
+                image={product.item.image}
                 alt={product.item.name}
             />
             <CardContent style={{width:'80%'}} sx={{display:'flex',justifyContent: 'space-between'}}>
