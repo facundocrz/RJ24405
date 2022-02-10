@@ -1,9 +1,7 @@
 import React from "react";
-import ItemCount from "./ItemCount";
 import { Card, CardActions, CardContent, CardMedia, Typography, Button } from "@mui/material";
 import {Link} from 'react-router-dom'
 
-const images = require.context('../img');
 
 export default function Item({product}) {
 
@@ -13,7 +11,7 @@ export default function Item({product}) {
                 <CardMedia
                     component="img"
                     height="140"
-                    image= {images(`./${product.picture}`)}
+                    image= {product.image}
                     alt={product.name}
                 />
                 <CardContent>

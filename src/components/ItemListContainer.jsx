@@ -1,47 +1,61 @@
 import React, { useState, useEffect } from "react";
 import ItemList from "./ItemList";
 import { Container, CircularProgress } from '@mui/material'
-import { productos } from '../data';
 import { useParams } from 'react-router-dom'
+import { getFirestore } from "../firebase/firebase";
 
 export default function ItemListContainer({ title }) {
     const [products, setProducts] = useState([]);
-    const [loading, setLoading] = useState(false)
+    const [loading, setLoading] = useState(true)
     const { categoryId } = useParams();
 
     useEffect(() => {
-        const promiseProd = new Promise((resolve, reject) => {
-            setTimeout(() => {
-                resolve(productos)
-            }, 200)
-        })
+        const db = getFirestore();
+        const itemCollection = db.collection("products");
 
-        promiseProd
-            .then((res) => {
-                categoryId ?
-                    setProducts(res.filter((item) => item.category === categoryId))
-                    :
-                    setProducts(res);
-                setLoading(true)
-            })
-            .catch((err) => {
-                console.log(err)
-            })
 
-    }, [categoryId])
+        (categoryId) ?
+            db
+                .collection("products")
+                .where("category", "==", categoryId)
+                .get()
+                .then((res) => {
+                    setProducts(res.docs.map(((doc) => ({ ...doc.data(), id: doc.id }))))
+                })
+                .catch((err)=>{
+                    console.log("error reading products from firebase ", err)
+                })
+                .finally(() => {
+                    setLoading(false)
+                })
+            :
+            db 
+             .collection("products")
+                .get()
+                .then((res)=>{
+                    setProducts(res.docs.map(((doc) => ({ ...doc.data(), id: doc.id }))))
+                })
+                .catch((err)=>{
+                    console.log("error reading products from firebase ", err)
+                })
+                .finally(() => {
+                    setLoading(false)
+                })
+            
+}, [categoryId])
 
-    return (
-        <>
-            <Container>
-                {(loading) ?
-                    <>
-                        <h1>{categoryId ? categoryId : title}</h1>
-                        <ItemList products={products} />
-                    </>
-                    :
-                    <CircularProgress />}
-            </Container>
+return (
+    <>
+        <Container>
+            {(!loading) ?
+                <>
+                    <h1>{categoryId ? categoryId : title}</h1>
+                    <ItemList products={products} />
+                </>
+                :
+                <CircularProgress />}
+        </Container>
 
-        </>
-    )
+    </>
+)
 }

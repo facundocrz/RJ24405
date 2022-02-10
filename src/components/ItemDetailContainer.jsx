@@ -1,36 +1,36 @@
 import React, { useState, useEffect } from "react";
 import ItemDetail from "./ItemDetail";
 import {CircularProgress, Container} from '@mui/material'
-import {productos} from '../data';
 import {useParams} from 'react-router-dom'
+import { getFirestore } from "../firebase/firebase";
+
 
 export default function ItemDetailContainer() {
-    const [product, setProduct] = useState([])
-    const [loading, setLoading] = useState(false)
+    const [product, setProduct] = useState()
+    const [loading, setLoading] = useState(true)
     const {itemId} = useParams();
-    const getItem = () => {
-        const promiseDetail = new Promise((resolve, reject) => {
-            setTimeout(() => {
-                resolve(productos)
-            },200)
-        })
-
-        promiseDetail
-            .then((res) => {
-                setProduct(res.find(item => item.id === parseInt(itemId)))
-                setLoading(true)
-            })
-            .catch((err) => {
-                console.log(err)
-            })
-    }
+    
     useEffect(() => {
-        getItem()
+        const db = getFirestore();
+        const itemCollection = db.collection("products");
+        const item = itemCollection.doc(itemId);
+        
+        item.get().then((doc)=>{
+            if (!doc.exists){
+                console.log('item does not exist');
+                return
+            }
+            setProduct({id: doc.id, ...doc.data()});
+        }).catch((err)=>{
+            console.log('Error searching item', err);
+        }).finally(()=>{
+            setLoading(false)
+        })
     }, [itemId])
     return (
         <Container>
         {
-            (loading) ?
+            (!loading) ?
                 <ItemDetail product={product} />
             :
             <CircularProgress />

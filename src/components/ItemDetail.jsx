@@ -4,7 +4,6 @@ import { Box, Typography, Button } from '@mui/material'
 import { Link } from "react-router-dom";
 import { cartContext } from "../context/CartProvider";
 
-const images = require.context('../img');
 
 export default function ItemDetail({ product }) {
 
@@ -26,7 +25,7 @@ export default function ItemDetail({ product }) {
                     {product.name}
                 </Typography>
                 <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }} style={{ width: '100%' }}>
-                    <img src={images(`./${product.picture}`)} style={{ width: '800px', height: '800px' }}></img>
+                    <img src={product.image} style={{ width: '800px', height: '800px' }}></img>
                     <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                         <h2>{"$" + product.price}</h2>
                         <p>socket: {product.socket}</p>
