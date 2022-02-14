@@ -1,7 +1,8 @@
 import { Button, Card, Typography } from "@mui/material";
 import { Box } from "@mui/system";
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { cartContext } from "../context/CartProvider";
+import PaymentForm from "./PaymentForm"
 
 const boxStyle ={margin: "30px 0px",
 display: "flex",
@@ -9,7 +10,9 @@ justifyContent: "space-between"}
 
 export default function CartSummary() {
 
+    const [open, setOpen] = useState(false)
     const { totalQuantity, totalPrice } = useContext(cartContext)
+
 
     return (
         <>
@@ -33,8 +36,9 @@ export default function CartSummary() {
                 <Box style={boxStyle}>
                     <span>Total</span>
                     <span>{'$ ' + totalPrice()}</span>
-                </Box>
-                <Button>COMPRAR</Button>
+                </Box>                  
+                <Button onClick={()=> setOpen(true)}>COMPRAR</Button>
+                <PaymentForm open={open} setOpen={setOpen}/>
             </Card>
 
         </>
