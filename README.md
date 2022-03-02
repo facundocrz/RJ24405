@@ -1,9 +1,8 @@
 # SIGMAH4RD | REACT ECOMMERCE!
 ​
+demonstration!
 
-demonstration
-
-![Demonstration](https://www.loom.com/share/1200e4564c9344abbfa036f58c0454c6)
+![Demonstration](https://www.loom.com/embed/1200e4564c9344abbfa036f58c0454c6)
 ​
 
 Find the hardware that you need and buy it!
