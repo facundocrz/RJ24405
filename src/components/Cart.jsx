@@ -14,7 +14,7 @@ export default function Cart() {
 
   return (
     <>
-    <Box style={{display:"flex", flexDirection: "row"}}>
+    <Box style={{display:"flex", flexDirection: "row", flexWrap: 'wrap'}}>
     <Container maxWidth="lg">
       {cart.length !== 0 ?
         <Box>
@@ -34,7 +34,7 @@ export default function Cart() {
         <Link to={"/"}>Ir a comprar...</Link>
         </>
       }
-    </Container>
+    </Container >
     {(cart.length !==0) && <CartSummary/>}
     </Box>
     </>

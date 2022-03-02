@@ -18,7 +18,8 @@ export default function PaymentForm({ open, setOpen }) {
   const zc = useRef()
   const [orderId, setOrderId] = useState();
 
-  const handleClick = () => {
+  const handleClick = (event) => {
+    event.preventDefault();
     const db = getFirestore();
     const orders = db.collection("orders");
     const myOrder = {
@@ -48,87 +49,97 @@ export default function PaymentForm({ open, setOpen }) {
   return (
     <>
       <Dialog open={open} maxWidth="md">
-        <Box
-          component="form"
-          sx={{
-            '& .MuiTextField-root': { m: 1, width: '25ch' },
-          }}
-          autoComplete="off"
-        >
-          <DialogTitle>
-            Completá tus datos
-          </DialogTitle>
-          <DialogContent>
-            <Grid container spacing={0}>
-              <Grid item xs={6}>
-                <TextField
-                  required
-                  variant="outlined"
-                  label="nombre"
-                  inputRef={name}
-                />
-                <TextField
-                  required
-                  variant="outlined"
-                  label="apellido"
-                  inputRef={surname}
-                />
-                <TextField
-                  required
-                  variant="outlined"
-                  label="email"
-                  inputRef={email}
-                />
+        {!orderId ?
+          <Box
+            component="form"
+            sx={{
+              '& .MuiTextField-root': { m: 1, width: '25ch' },
+            }}
+            autoComplete="off"
+            onSubmit={handleClick}
+          >
+            <DialogTitle>
+              Completá tus datos
+            </DialogTitle>
+            <DialogContent>
+              <Grid container spacing={0}>
+                <Grid item xs={12} sm={6}>
+                  <TextField
+                    required
+                    variant="outlined"
+                    label="nombre"
+                    inputRef={name}
+                  />
+                  <TextField
+                    required
+                    variant="outlined"
+                    label="apellido"
+                    inputRef={surname}
+                  />
+                  <TextField
+                    required
+                    variant="outlined"
+                    label="email"
+                    inputRef={email}
+                  />
+                </Grid>
+                <Grid item xs={6}>
+                  <TextField
+                    required
+                    variant="outlined"
+                    label="provincia"
+                    inputRef={province}
+                  />
+                  <TextField
+                    required
+                    variant="outlined"
+                    label="localidad"
+                    inputRef={city}
+                  />
+                  <TextField
+                    required
+                    variant="outlined"
+                    label="domicilio"
+                    inputRef={address}
+                  />
+                  <TextField
+                    required
+                    variant="outlined"
+                    label="código postal"
+                    inputRef={zc}
+                  />
+                </Grid>
               </Grid>
-              <Grid item xs={6}>
-                <TextField
-                  required
-                  variant="outlined"
-                  label="provincia"
-                  inputRef={province}
-                />
-                <TextField
-                  required
-                  variant="outlined"
-                  label="localidad"
-                  inputRef={city}
-                />
-                <TextField
-                  required
-                  variant="outlined"
-                  label="domicilio"
-                  inputRef={address}
-                />
-                <TextField
-                  required
-                  variant="outlined"
-                  label="código postal"
-                  inputRef={zc}
-                />
-              </Grid>
-            </Grid>
 
-          </DialogContent>
-          <DialogActions>
-            {orderId ?
-              <>
-                <Button onClick={() => clear()}>Volver</Button>
-                <Typography variant="h6">
-                  felicitaciones tu orden es: {orderId}
-                </Typography>
-              </>
-              :
-              <>
-                <Button onClick={() => setOpen(false)}>Volver</Button>
-                <Button
-                  color="primary"
-                  variant="contained"
-                  onClick={() => handleClick()}>
-                  Continuar
-                </Button>
-              </>}
-          </DialogActions>
-        </Box>
+            </DialogContent>
+            <DialogActions>
+              <Button onClick={() => setOpen(false)}>Volver</Button>
+              <Button
+                color="primary"
+                variant="contained"
+                type='submit'
+              >
+                Continuar
+              </Button>
+            </DialogActions>
+          </Box>
+          :
+          <>
+            <>
+            <Typography variant="h4" style={{textAlign: 'center'}}>
+                Gracias por tu compra!
+              </Typography>
+              <Typography variant="h5" style={{textAlign: 'center'}}>
+                Te enviamos al mail los detalles para que puedas continuar con el seguimiento de tu pedido
+              </Typography>
+              <Typography variant="p" style={{textAlign: 'center'}}>
+              </Typography>
+              <Typography variant="h6" style={{textAlign: 'center'}}>
+                Tu código de orden es: {orderId}
+              </Typography>
+              <Button onClick={() => clear()}>Volver</Button>
+            </>
+          </>}
       </Dialog>
     </>
   );

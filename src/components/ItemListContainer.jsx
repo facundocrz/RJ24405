@@ -46,14 +46,17 @@ export default function ItemListContainer({ title }) {
 
 return (
     <>
-        <Container>
-            {(!loading) ?
+        <Container sx={{minHeight:'700px'}}>
+            {!loading ?
                 <>
                     <h1>{categoryId ? categoryId : title}</h1>
                     <ItemList products={products} />
                 </>
                 :
-                <CircularProgress />}
+                <CircularProgress style={{
+                    position:'fixed',
+                    top: '50%',
+                    right: '50%'}}/>}
         </Container>
 
     </>

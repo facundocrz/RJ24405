@@ -7,7 +7,7 @@ export default function Item({product}) {
 
     return (
         <>
-            <Card style={{width:'400px'}}>
+            <Card style={{minWidth:'200px', height:'350px', display: 'flex', flexDirection:'column', justifyContent:'space-between', alignItems: 'center'}} variant="outlined">
                 <CardMedia
                     component="img"
                     height="140"
@@ -15,14 +15,14 @@ export default function Item({product}) {
                     alt={product.name}
                 />
                 <CardContent>
-                    <Typography gutterBottom variant="h4" component="div">
+                    <Typography gutterBottom variant="h5" style={{textAlign: 'center'}}>
                         {product.name}
                     </Typography>
-                    <Typography gutterBottom variant="h5" component="div">
+                    <Typography variant="h5" style={{textAlign: 'center'}}>
                         {"$" + product.price}
                     </Typography>
                 </CardContent>
-                <CardActions style={{display: 'flex', flexDirection:'column'}}>
+                <CardActions >
                     <Button variant="outlined" color="primary">
                       <Link to={`/item/${product.id}`} style={{ textDecoration: 'none', color: '#1976d2' }}>
                           ver detalle

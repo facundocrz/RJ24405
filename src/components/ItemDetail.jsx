@@ -28,9 +28,9 @@ export default function ItemDetail({ product }) {
                     <img src={product.image} style={{ width: '800px', height: '800px' }}></img>
                     <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                         <h2>{"$" + product.price}</h2>
-                        <p>socket: {product.socket}</p>
-                        <p>frecuencia: {product.frecuency}</p>
-                        <p>nucleos: {product.cores}</p>
+                        <p>{product.spec1}</p>
+                        <p>{product.spec2}</p>
+                        <p>{product.spec3}</p>
                         {buttonCart ?
                             <Box container sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
                                 <h3></h3>

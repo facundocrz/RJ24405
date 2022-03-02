@@ -1,20 +1,33 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Item from "./Item";
-import { Box } from '@mui/material/'
+import { Grid, Typography } from '@mui/material/'
 
-export default function ItemList({products}) {
-    
+export default function ItemList({ products }) {
+
     return (
         <>
-            <Box sx={{display:'flex', flexDirection:'row', flexWrap: 'wrap'}}>
-                {products.map(item => {
+            
+            <Grid
+                container
+                spacing={4}
+                justify="center"
+            >
+                {products.length !== 0 ?
+                products.map(item => {
                     return (
-                            <div key={item.id} style={{margin: '5px'}}>
-                            <Item product={item}/>
-                            </div>
+                        <Grid item xs={12} sm={6} md={4} key={item.id}>
+                            <Item product={item} />
+                        </Grid>
                     )
-                })}
-            </Box>
+                })
+                :
+                <Grid item  xs={12} sm={12} md={12}>
+                <Typography variant="h4">
+                    Actualmente no contamos con productos de esta categoría
+                </Typography>
+                </Grid>
+                }
+            </Grid>
         </>
     )
 }
