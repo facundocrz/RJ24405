@@ -6,7 +6,7 @@ products selection
 
 purchase form
 
-![Demonstration](​https://media.giphy.com/media/RV26jC5KIPdus7YKsb/giphy.gif)
+![Demonstration](​https://media.giphy.com/media/gVtnEdoKBCAd83TWmV/giphy.gif)
 ​
 
 Find the hardware that you need and buy it!
@@ -26,11 +26,7 @@ Made by Cruz Facundo.
 - **Firebase's Firestore** - the project doesn't have a backend
 ​
 ### HOW TO SET IT UP​
-- Clone this repository, navigate to the repo's directory and run: 
-    **npm install**
-    **npm install @mui/material**
-    **npm install @mui/icons-material**
-    **npm install react-router-dom@5.2.0**.
+- Clone this repository, navigate to the repo's directory and run: **npm install**.
 - After finished run: **npm start**.
 - The project should now be running on your browser.
 
