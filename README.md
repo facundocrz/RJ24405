@@ -6,7 +6,7 @@ products selection!
 
 purchase form!
 
-![form](​https://media.giphy.com/media/gVtnEdoKBCAd83TWmV/giphy.gif)
+![form](https://media.giphy.com/media/gVtnEdoKBCAd83TWmV/giphy.gif)
 ​
 
 Find the hardware that you need and buy it!
