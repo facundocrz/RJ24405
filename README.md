@@ -2,11 +2,11 @@
 ​
 products selection!
 
-![Demonstration](https://media.giphy.com/media/yzX87qVBAiJlhcmbTn/giphy.gif)
+![products-selection](https://media.giphy.com/media/yzX87qVBAiJlhcmbTn/giphy.gif)
 
 purchase form!
 
-![](​https://media.giphy.com/media/gVtnEdoKBCAd83TWmV/giphy.gif)
+![form](​https://media.giphy.com/media/gVtnEdoKBCAd83TWmV/giphy.gif)
 ​
 
 Find the hardware that you need and buy it!
