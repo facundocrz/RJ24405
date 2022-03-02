@@ -1,10 +1,10 @@
 # SIGMAH4RD | REACT ECOMMERCE!
 ​
-products selection
+products selection!
 
 ![Demonstration](https://media.giphy.com/media/yzX87qVBAiJlhcmbTn/giphy.gif)
 
-purchase form
+purchase form!
 
 ![Demonstration](​https://media.giphy.com/media/EAsqVyAE1G0XXYHLrL/giphy.gif)
 ​
